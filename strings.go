@@ -42,3 +42,17 @@ func Concat(txt []string, sep string) string {
 	}
 	return builder.String()
 }
+
+// NoDuplicatedCharacter removes all characters that are the same and adajacent.
+func NoDuplicatedCharacter(s string) string {
+	var builder strings.Builder
+	last := rune(s[0] - 1)
+	for _, r := range s {
+		if r == last {
+			continue
+		}
+		last = r
+		builder.WriteRune(r)
+	}
+	return builder.String()
+}

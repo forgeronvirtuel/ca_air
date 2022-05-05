@@ -56,3 +56,25 @@ func TestConcat(t *testing.T) {
 }
 
 func TestNoDuplicatedCharacter(t *testing.T) {
+	type args struct {
+		s string
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{
+			name: "standard use case",
+			args: args{s: "Heello     Woooooorld!"},
+			want: "Helo World!",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := NoDuplicatedCharacter(tt.args.s); got != tt.want {
+				t.Errorf("NoDuplicatedCharacter() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
