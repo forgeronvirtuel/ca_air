@@ -30,3 +30,29 @@ func TestSplit(t *testing.T) {
 	}
 }
 
+func TestConcat(t *testing.T) {
+	type args struct {
+		txt []string
+		sep string
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{
+			name: "normal use case",
+			args: args{txt: []string{"Hello", "World!"}, sep: " "},
+			want: "Hello World!",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := Concat(tt.args.txt, tt.args.sep); got != tt.want {
+				t.Errorf("Concat() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestNoDuplicatedCharacter(t *testing.T) {

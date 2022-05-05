@@ -31,3 +31,14 @@ func Split(txt, sep string) []string {
 	return res
 }
 
+// Concat concatenate a list of string, separated by the sep string
+func Concat(txt []string, sep string) string {
+	var builder strings.Builder
+	for idx, s := range txt {
+		builder.WriteString(s)
+		if idx < len(txt)-1 {
+			builder.WriteString(sep)
+		}
+	}
+	return builder.String()
+}
